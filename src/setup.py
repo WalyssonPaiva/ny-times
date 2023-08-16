@@ -24,10 +24,10 @@ class Config:
             try:
                 work_items = WorkItems()
                 work_items.get_input_work_item()
-                self.SEARCH_FRASE = work_items.get_work_item_variable('SEARCH_PHRASE')
-                self.SECTIONS = [section.strip() for section in  work_items.get_work_item_variable('SECTIONS').split(',')]
-                self.MONTHS = work_items.get_work_item_variable('MONTHS')
-                self.FILE_NAME = work_items.get_work_item_variable('FILE_NAME')
+                self.SEARCH_FRASE = work_items.get_work_item_variable('SEARCH_PHRASE', 'Bitcoin')
+                self.SECTIONS = [section.strip() for section in  work_items.get_work_item_variable('SECTIONS', 'Business').split(',')]
+                self.MONTHS = work_items.get_work_item_variable('MONTHS', 2)
+                self.FILE_NAME = work_items.get_work_item_variable('FILE_NAME', 'report')
                 self.logger.info('Config initialized in prod mode')
             except Exception as e:
                 self.logger.error('Config initialization error: {}'.format(e))
